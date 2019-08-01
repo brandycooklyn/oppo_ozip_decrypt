@@ -32,7 +32,7 @@ keys=[
         "12cac11211aac3aea2658690122c1e81", #A1,A83t
       ]
 
-   
+
 def keytest(data):
     for key in keys:
         ctx=AES.new(binascii.unhexlify(key),AES.MODE_ECB)
@@ -58,8 +58,11 @@ def rmrf(path):
 
 def main():
     print ("ozipdecrypt 0.5 (c) B.Kerler 2017-2019")
-    if (len(sys.argv)!=2):
-        print ("usage: ozipdecrypt.py [*.ozip]")
+    user_key = None
+    if (len(sys.argv)==3):
+        user_key=sys.argv[2]
+    elif (len(sys.argv)!=2):
+        print ("usage: ozipdecrypt.py <*.ozip> [your_key_hex]")
         exit(1)
 
     with open(sys.argv[1],'rb') as fr:
@@ -71,11 +74,15 @@ def main():
         else:
                 print ("ozip has unknown magic, OPPOENCRYPT! expected !")
                 exit(1)
-        
+
         if pk==False:
             fr.seek(0x1050)
             data=fr.read(16)
-            key=keytest(data)
+            if user_key:
+                print ("using your key: "+user_key)
+                key=binascii.unhexlify(user_key)
+            else:
+                key=keytest(data)
             if (key==-1):
                 print("Unknown AES key, reverse key from recovery first!")
                 exit(1)
