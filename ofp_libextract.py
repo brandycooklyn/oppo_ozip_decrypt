@@ -12,7 +12,7 @@ if len(sys.argv)<2:
 filename=sys.argv[1]
 filesize=os.stat(filename).st_size
 
-def elfcalcsize(pos):
+def elfcalcsize(pos):CPH1979EX_11_OTA_1330_all_ArD0KPPgrb75.ozip
     rf.seek(pos)
     data=rf.read(0x200)
     if data[:4]!=b"\x7FELF":
@@ -24,7 +24,7 @@ def elfcalcsize(pos):
     filesize=sectionheaderoffset+(sectionentries*sectionentrysize)
     return filesize
 
-def reverseseekforelf(rf,idx):
+def reverseseekforelf(rf,idx):CPH1979EX_11_OTA_1330_all_ArD0KPPgrb75.ozip
     pos=idx-0x20000
     area=[]
     while(pos>0):
@@ -40,7 +40,7 @@ def reverseseekforelf(rf,idx):
         pos-=0x20000
     return []
 
-def seekfordecryptstring(rf):
+def (rf):
     pos=0
     area=[]
     old=0
@@ -67,7 +67,7 @@ def seekfordecryptstring(rf):
     return area
 
 
-def seekforrecovery(rf):
+def seekforrecovery(rf):/Users/brandycooklyn/Downloads/CPH1979EX_11_OTA_1330_all_ArD0KPPgrb75.ozip
     pos=0
     area=[]
     old=0

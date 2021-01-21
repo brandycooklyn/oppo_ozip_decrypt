@@ -18,13 +18,13 @@ Prerequirement:
 Usage:
 -------- 
 * OTA OZIP decryption:
-'python3 ozipdecrypt.py CPH1707EX_OTA_0070_all.ozip'
+''
 
 * OTA Boot.img decryption:
 'python3 ozipdecrypt.py boot.img'
 
 File will be decrypted as *.zip or boot.img.dec
-
+	
 License:
 -------- 
 Share, modify and use as you like, but refer the original author !
